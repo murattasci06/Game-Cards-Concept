@@ -1,5 +1,4 @@
 <html>
-
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
@@ -8,10 +7,10 @@
   <title>Game Cards App</title>
   <link rel="icon" type="image/png" href="https://cdn1.iconfinder.com/data/icons/entertainment-events-hobbies/24/card-game-cards-hold-512.png">
   
-
-  
 <style>
-
+.card-partially-visible {
+  pointer-events: none;
+}
 
 #main-content {
   display: none;
@@ -111,8 +110,8 @@ ul {
   cursor: pointer;
   transform-style: preserve-3d;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 3.5px solid rgba(255, 215, 0, 0.6); /* Altın sarısı rengi ve parıltılı efekt */
-  background-image: linear-gradient(45deg, rgba(255, 215, 0, 0.5), transparent, rgba(255, 215, 0, 0.5)); /* Arkaplan gradienti */
+  border: 3.5px solid rgba(255, 215, 0, 0.6); 
+  background-image: linear-gradient(45deg, rgba(255, 215, 0, 0.5), transparent, rgba(255, 215, 0, 0.5)); 
 }
 .card__front, .card__back {
   position: absolute;
@@ -163,19 +162,19 @@ ul {
 }
 @media (max-width: 700px) {
   .card__num {
-    font-size: 70px;
+	font-size: 70px;
   }
 }
 @media (max-width: 700px) {
   .card {
-    width: 100%;
-    height: 290px;
-    margin-right: 0;
-    float: none;
+	width: 100%;
+	height: 290px;
+	margin-right: 0;
+	float: none;
   }
   .card .card__front,
   .card .card__back {
-    height: 290px;
+	height: 290px;
 	overflow: hidden;
   }
 }
@@ -195,14 +194,14 @@ main h1 {
 .fa-github {
   color: white; 
   font-size: 50px;
-  margin-top: 8px; /* Yukarıdaki boşluğu ayarlayın */
+  margin-top: 8px; 
 }
 
 .tm-container {
   display: flex;
   justify-content: center;
-  align-items: center; /* Eğer dikey merkezleme de istiyorsanız */
-  /* Diğer gerekli stil tanımlamaları */
+  align-items: center; 
+  
 }
 
 .tm-letter {
@@ -236,34 +235,34 @@ main h1 {
 }
 
 a {
-    position: relative;
-    display: inline-block;
-    padding: 0px;
+	position: relative;
+	display: inline-block;
+	padding: 0px;
 }
 
 a::before {
-    content: '';
-    position: absolute;
-    top: 50%; /* Orta konumu */
-    left: 50%; /* Orta konumu */
-    transform: translate(-50%, -50%); /* Merkezden düzgün bir şekilde ayarlamak için */
-    width: 50px;
-    height: 45px;
+	content: '';
+	position: absolute;
+	top: 50%; /* Orta konumu */
+	left: 50%; /* Orta konumu */
+	transform: translate(-50%, -50%); 
+	width: 50px;
+	height: 45px;
    
 	
 	border-radius: 50%; /* Eğer bir daire şeklinde efekt isteniyorsa */
-    box-shadow: 0 0 8px 4px rgba(110, 110, 110, 0.8); /* Buradaki piksel değerlerini gölgenin yayılımını kontrol etmek için ayarlayabilirsiniz */
+	box-shadow: 0 0 8px 4px rgba(110, 110, 110, 0.8); 
 	
 	
-	filter: blur(4px) brightness(1.5); /* Parlaklık filtresi eklendi */
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+	filter: blur(4px) brightness(1.5); /
+	opacity: 0;
+	transition: opacity 0.3s ease, transform 0.3s ease;
   
-    z-index: -1;
+	z-index: -1;
 }
 
 a:hover::before {
-    opacity: 1;
+	opacity: 1;
   
 }
 
@@ -279,27 +278,27 @@ body.hoverEffect {
 	padding: 20px;
 	border-radius: 15px;
 	box-shadow: 
-	0 0 50px 10px #FFD700,  /* Altın sarısı glow */
-	0 0 100px 20px #0000FF, /* Mavi glow */
-	0 0 150px 30px #000033; /* Koyu mavi shadow */
-	background: rgba(0,0,0,0.7);  /* Slightly transparent black to make the ambilight effect visible behind the card */
-	color:#FFD700;   /* Altın sarısı text */
+	0 0 50px 10px #FFD700,  
+	0 0 100px 20px #0000FF, 
+	0 0 150px 30px #000033; 
+	background: rgba(0,0,0,0.7);  
+	color:#FFD700;   
 	text-align: center;
-	border: 3px solid #FFD700; /* Altın sarısı border */
+	border: 3px solid #FFD700; 
 }
 
 #gameCardLink span {
   font-size: 18px;
-  margin-right: 5px; /* Harf aralarına 10 piksel boşluk ekler */
-  font-weight: bold; /* Metni kalın yapar */
+  margin-right: 5px; 
+  font-weight: bold; 
 }
 
 #gameCardLink span:last-child {
-  font-size: 0.79em; /* ® simgesini küçült */
-  vertical-align: super; /* ® simgesini yukarı taşı */
+  font-size: 0.79em; 
+  vertical-align: super; 
   opacity: 0.9;
-  font-weight: bold; /* Metni kalın yapar */
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* Siyah gölge ekler */
+  font-weight: bold; 
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); 
 }
 
 
@@ -324,12 +323,12 @@ body.hoverEffect {
 
   border-top: 9px solid #00a2ed;
   border-radius: 80%;
-  width: 12vw; /* Genişliği viewport'un %25'i yapar */
-  height: 12vw; /* Yüksekliği de viewport'un %25'i yapar */
-  animation: spin 2s linear infinite; /* Burada spin animasyonunu kullanıyoruz */
-  position: absolute; /* Pozisyonu mutlaka absolute olarak ayarlamalısınız. */
-  left: 44%; /* X ekseninde ortalamak için sayfanın yarısı kadar sola kaydırın. */
-  top: 46%; /* Y ekseninde ortalamak için sayfanın yarısı kadar yukarı kaydırın. */
+  width: 12vw; 
+  height: 12vw; 
+  animation: spin 2s linear infinite; 
+  position: absolute; 
+  left: 44%; 
+  top: 46%; /
   transform: translate(-50%, -50%) rotate(0deg); /* Yuvarlak halkanın tam ortasında olması için bu dönüşümü kullanın. */
   }
 
@@ -358,8 +357,8 @@ body.hoverEffect {
 <div id="main-content">
 
   <div class="tm-container">
-    <div class="tm-letter" id="t-letter">T</div>
-    <div class="tm-letter" id="m-letter">M</div>
+	<div class="tm-letter" id="t-letter">T</div>
+	<div class="tm-letter" id="m-letter">M</div>
   </div>
 
 
@@ -371,37 +370,37 @@ body.hoverEffect {
 
 <main>
    <div id="gameCardLink">
-      <span>G</span>
-      <span>a</span>
-      <span>m</span>
-      <span>e</span>
-      <span> </span> <!-- Boşluk eklemek için span ekledik -->
+	  <span>G</span>
+	  <span>a</span>
+	  <span>m</span>
+	  <span>e</span>
+	  <span> </span> <!-- Boşluk eklemek için span ekledik -->
 	  <span> </span>
-      <span>C</span>
+	  <span>C</span>
 	  <span> </span>
-      <span>a</span>
+	  <span>a</span>
 	  <span> </span>
-      <span>r</span>
+	  <span>r</span>
 	  <span> </span>
-      <span>d</span>
+	  <span>d</span>
 	  <span> </span>
-      <span>s</span>
-	  <span>®</span> <!-- Registered trademark simgesi için span -->
+	  <span>s</span>
+	  <span>®</span>
    </div>
   <p><a href="https://github.com/murattasci06"><i class="fab fa-github"></i></a></p>
 </main>
 
 
 <ul>
-  <li class="card" >
-    <div class="card__flipper">
-      <div class="card__front">
-        <img src="https://gecbunlari.com/wp-content/uploads/2021/12/Spiderman-No-Way-Home.jpg" alt="Spiderman">
-        <p class="card__name"><span>Marvel</span><br>Spiderman</p>
-        <p class="card__num">1</p>
-      </div>
+  <li id='spider' class="card" >
+	<div class="card__flipper">
+	  <div class="card__front">
+		<img src="https://gecbunlari.com/wp-content/uploads/2021/12/Spiderman-No-Way-Home.jpg" alt="Spiderman">
+		<p class="card__name"><span>Marvel</span><br>Spiderman</p>
+		<p class="card__num">1</p>
+	  </div>
   
-      
+	  
 	  <iframe class="frame" 
 	  width="225"
 	  height="340"
@@ -412,28 +411,28 @@ body.hoverEffect {
 	  allowfullscreen
 	  ></iframe>
 
-      
-      <div class="card__back">
-        <svg height="180" width="180">
-        <circle cx="90" cy="90" r="65" stroke="#514d9b" stroke-width="35"  />
-        <!-- Dış dairenin kenarı (yeşil) -->
-         <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
-        </svg>
-        <span>1.89 Bil. $</span>
-      </div>
-    </div>
+	  
+	  <div class="card__back">
+		<svg height="180" width="180">
+		<circle cx="90" cy="90" r="65" stroke="#514d9b" stroke-width="35"  />
+		<!-- Dış dairenin kenarı (yeşil) -->
+		 <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
+		</svg>
+		<span>1.89 Bil. $</span>
+	  </div>
+	</div>
   </li>
  
  
-  <li class="card">
-    <div class="card__flipper">
-       <div class="card__front">
-	     <img src="https://i.pinimg.com/736x/1e/f1/3d/1ef13dfa4b7b8c131302e242d1ec48d7.jpg" alt="Batman">
-         <p class="card__name"><span>DC</span><br>Batman</p>
-        <p class="card__num">2</p>
-      </div>
+  <li id='batman' class="card">
+	<div class="card__flipper">
+	   <div class="card__front">
+		 <img src="https://i.pinimg.com/736x/1e/f1/3d/1ef13dfa4b7b8c131302e242d1ec48d7.jpg" alt="Batman">
+		 <p class="card__name"><span>DC</span><br>Batman</p>
+		<p class="card__num">2</p>
+	  </div>
 	  
-	    <iframe class="frame" 
+		<iframe class="frame" 
 		width="225"
 		height="340"
 		src="https://www.youtube.com/embed/mqqft2x_Aa4?autoplay=1&mute=1&vq=hd1080"
@@ -444,23 +443,23 @@ body.hoverEffect {
 		></iframe>
 
 	  
-      <div class="card__back">
-        <svg height="180" width="180">
-          <circle cx="90" cy="90" r="65" stroke="#35a541" stroke-width="35"/>
+	  <div class="card__back">
+		<svg height="180" width="180">
+		  <circle cx="90" cy="90" r="65" stroke="#35a541" stroke-width="35"/>
 		  <!-- Dış dairenin kenarı (yeşil) -->
-          <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
-        </svg>
-        <span>771 Mil. $</span>
-      </div>
-    </div>
+		  <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
+		</svg>
+		<span>771 Mil. $</span>
+	  </div>
+	</div>
   </li>
   
-  <li class="card">
-    <div class="card__flipper">
-       <div class="card__front">
-	    <img src="https://wallpapercave.com/wp/wp12279011.jpg" alt="Guardians_of_the_Galaxy_Vol_3">
-        <p class="card__name"><span>Marvel</span><br>Guardians_of_the_Galaxy_Vol_3</p>
-        <p class="card__num">3</p>
+  <li id='guard' class="card">
+	<div class="card__flipper">
+	   <div class="card__front">
+		<img src="https://wallpapercave.com/wp/wp12279011.jpg" alt="Guardians_of_the_Galaxy_Vol_3">
+		<p class="card__name"><span>Marvel</span><br>Guardians_of_the_Galaxy_Vol_3</p>
+		<p class="card__num">3</p>
 		</div>
 		<iframe class="frame" 
 		width="225"
@@ -472,25 +471,25 @@ body.hoverEffect {
 		allowfullscreen
 		></iframe>
 		
-     
-      <div class="card__back">
-        <svg height="180" width="180">
-          <circle cx="90" cy="90" r="65" stroke="#bdb235" stroke-width="35"/>
+	 
+	  <div class="card__back">
+		<svg height="180" width="180">
+		  <circle cx="90" cy="90" r="65" stroke="#bdb235" stroke-width="35"/>
 		 <!-- Dış dairenin kenarı (yeşil) -->
-          <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
-        </svg>
-        <span>845.4 Mil. $</span>
-      </div>
-    </div>
+		  <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
+		</svg>
+		<span>845.4 Mil. $</span>
+	  </div>
+	</div>
   </li>
    
   
-  <li class="card">
-    <div class="card__flipper">
-       <div class="card__front">
+  <li id='shazam' class="card">
+	<div class="card__flipper">
+	   <div class="card__front">
 	   <img src="https://wallpaperaccess.com/full/8940499.jpg" alt="Shazam">
-        <p class="card__name"><span>DC</span><br>Shazam2</p>
-        <p class="card__num">4</p>
+		<p class="card__name"><span>DC</span><br>Shazam2</p>
+		<p class="card__num">4</p>
 		</div>
 		<iframe class="frame" 
 		width="225"
@@ -503,24 +502,24 @@ body.hoverEffect {
 		></iframe>
 		
 		
-     
-      <div class="card__back">
-        <svg height="180" width="180">
-          <circle cx="90" cy="90" r="65" stroke="#db6623" stroke-width="35"/>
+	 
+	  <div class="card__back">
+		<svg height="180" width="180">
+		  <circle cx="90" cy="90" r="65" stroke="#db6623" stroke-width="35"/>
 		 <!-- Dış dairenin kenarı (yeşil) -->
-          <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
-        </svg>
-        <span>462.5 Mil. $</span>
-      </div>
-    </div>
+		  <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
+		</svg>
+		<span>462.5 Mil. $</span>
+	  </div>
+	</div>
   </li>
 
-  <li class="card">
-    <div class="card__flipper">
-       <div class="card__front">
-	    <img src="https://images2.alphacoders.com/131/1316679.jpeg" alt="Flash">
-        <p class="card__name"><span>DC</span><br>Flash</p>
-        <p class="card__num">5</p>
+  <li id='flash' class="card">
+	<div class="card__flipper">
+	   <div class="card__front">
+		<img src="https://images2.alphacoders.com/131/1316679.jpeg" alt="Flash">
+		<p class="card__name"><span>DC</span><br>Flash</p>
+		<p class="card__num">5</p>
 		</div>
 		<iframe class="frame" 
 		width="225"
@@ -533,24 +532,24 @@ body.hoverEffect {
 		></iframe>
 		
 		
-     
-      <div class="card__back">
-        <svg height="180" width="180">
-          <circle cx="90" cy="90" r="65" stroke="#3e5eb3" stroke-width="35"/>
+	 
+	  <div class="card__back">
+		<svg height="180" width="180">
+		  <circle cx="90" cy="90" r="65" stroke="#3e5eb3" stroke-width="35"/>
 		  <!-- Dış dairenin kenarı (yeşil) -->
-          <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
-        </svg>
-        <span>560.2 Mil. $</span>
-      </div>
-    </div>
+		  <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
+		</svg>
+		<span>560.2 Mil. $</span>
+	  </div>
+	</div>
   </li>
  
-  <li class="card">
-    <div class="card__flipper">
-       <div class="card__front">
-	    <img src=" https://images3.alphacoders.com/121/1213553.jpg" alt="Dr_Strange_2">
-        <p class="card__name"><span>Marvel</span><br>Dr_Strange_2</p>
-        <p class="card__num">6</p>
+  <li id='strange' class="card">
+	<div class="card__flipper">
+	   <div class="card__front">
+		<img src=" https://images3.alphacoders.com/121/1213553.jpg" alt="Dr_Strange_2">
+		<p class="card__name"><span>Marvel</span><br>Dr_Strange_2</p>
+		<p class="card__num">6</p>
 		 </div>
 		<iframe class="frame" 
 		width="225"
@@ -562,16 +561,16 @@ body.hoverEffect {
 		allowfullscreen
 		></iframe>
 		
-      
-      <div class="card__back">
-        <svg height="180" width="180">
-          <circle cx="90" cy="90" r="65" stroke="#aa9e5c" stroke-width="35"/>
+	  
+	  <div class="card__back">
+		<svg height="180" width="180">
+		  <circle cx="90" cy="90" r="65" stroke="#aa9e5c" stroke-width="35"/>
 		  <!-- Dış dairenin kenarı (yeşil) -->
-          <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
-        </svg>
-        <span>955.8 Mil. $</span>
-      </div>
-    </div>
+		  <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
+		</svg>
+		<span>955.8 Mil. $</span>
+	  </div>
+	</div>
   </li>
 </ul>
 
@@ -587,54 +586,54 @@ var Flipper = (function() {
   var win = $(window);
   
   var flip = function() {
-    var thisCard = $(this);
-    var thisFlipper = thisCard.find('.card__flipper');
-    var offset = thisCard.offset();
-    var xc = win.width() / 2;
-    var yc = win.height() / 2;
-    var docScroll = $(document).scrollTop();
-    var cardW = thisCard.outerWidth() / 2;
-    var cardH = thisCard.height() / 2;
+	var thisCard = $(this);
+	var thisFlipper = thisCard.find('.card__flipper');
+	var offset = thisCard.offset();
+	var xc = win.width() / 2;
+	var yc = win.height() / 2;
+	var docScroll = $(document).scrollTop();
+	var cardW = thisCard.outerWidth() / 2;
+	var cardH = thisCard.height() / 2;
 
-    var transX = xc - offset.left - cardW;
-    var transY = docScroll + yc - offset.top - cardH;
+	var transX = xc - offset.left - cardW;
+	var transY = docScroll + yc - offset.top - cardH;
 //     if (offset.top > card.height()) transY = docScroll - offset.top + cardH;
-    if (win.width() <= 700) transY = 0;
-    
-    if (card.hasClass('active')) unflip();
-        
-    thisCard.css({'z-index': '3'}).addClass('active');
-    
-    thisFlipper.css({
-      'transform': 'translate3d(' + transX + 'px,' + transY + 'px, 0) rotateY(180deg) scale(1)',
-      '-webkit-transform': 'translate3d(' + transX + 'px,' + transY + 'px, 0) rotateY(180deg) scale(1)',
-      '-ms-transform': 'translate3d(' + transX + 'px,' + transY + 'px, 0) rotateY(180deg) scale(1)'
-    }).addClass('active');
-    
+	if (win.width() <= 700) transY = 0;
 	
-    return false;
+	if (card.hasClass('active')) unflip();
+		
+	thisCard.css({'z-index': '3'}).addClass('active');
+	
+	thisFlipper.css({
+	  'transform': 'translate3d(' + transX + 'px,' + transY + 'px, 0) rotateY(180deg) scale(1)',
+	  '-webkit-transform': 'translate3d(' + transX + 'px,' + transY + 'px, 0) rotateY(180deg) scale(1)',
+	  '-ms-transform': 'translate3d(' + transX + 'px,' + transY + 'px, 0) rotateY(180deg) scale(1)'
+	}).addClass('active');
+	
+	
+	return false;
   };
   
   var unflip = function(e) {
-    card.css({'z-index': '1'}).removeClass('active');
-    flipper.css({
-      'transform': 'none',
-      '-webkit-transform': 'none',
-      '-ms-transform': 'none'
-    }).removeClass('active');
+	card.css({'z-index': '1'}).removeClass('active');
+	flipper.css({
+	  'transform': 'none',
+	  '-webkit-transform': 'none',
+	  '-ms-transform': 'none'
+	}).removeClass('active');
   };
   
   var bindActions = function() {
-    card.on('click', flip);
-    win.on('click', unflip);
+	card.on('click', flip);
+	win.on('click', unflip);
   }
   
   var init = function() {
-    bindActions();
+	bindActions();
   };
   
   return {
-    init: init
+	init: init
   };
   
 }());
@@ -647,34 +646,35 @@ Flipper.init();
 <script>
 <!-- HOOVER FOR TRAILER -->
 
-let hoverTimeout;
+var hoverTimeout;
 
-$('.card').hover(function() {
-    const currentCard = $(this); // Store the current card element in a variable
+function onHover() {
+	const currentCard = $(this); 
 
-    hoverTimeout = setTimeout(() => {
-        currentCard.find('.card__front').hide();
-        currentCard.find('.iframe').show();
-        var src = currentCard.find('.iframe').attr("src");
-        currentCard.find('.iframe').attr("src", src);
+	hoverTimeout = setTimeout(() => {
+		currentCard.find('.card__front').hide();
+		currentCard.find('.iframe').show();
+		var src = currentCard.find('.iframe').attr("src");
+		currentCard.find('.iframe').attr("src", src);
 
-        // Add fullscreen functionality
-        currentCard.find('.iframe').on('click', function() {
-            $(this).requestFullscreen();
-        });
+	 
+		currentCard.find('.iframe').on('click', function() {
+			$(this).requestFullscreen();
+		});
 
-    }, 5000); // 5000 milliseconds (5 seconds)
+	}, 5000); // 5000 milliseconds (5 seconds)
  
-}, function() {
-    clearTimeout(hoverTimeout); // Clear the timeout to prevent actions if the user moves away before 5 seconds
+}
+function onHoverTime() {
+	clearTimeout(hoverTimeout); // Clear the timeout to prevent actions if the user moves away before 5 seconds
 
-    $(this).find('.card__front').show();
-    $(this).find('.iframe').hide();
-    var src = $(this).find('.iframe').attr("src");
-    if (src) {
-        $(this).find('.iframe').attr("src", src.replace('?autoplay=1', ''));
-    }
-});
+	$(this).find('.card__front').show();
+	$(this).find('.iframe').hide();
+	var src = $(this).find('.iframe').attr("src");
+	if (src) {
+		$(this).find('.iframe').attr("src", src.replace('?autoplay=1', ''));
+	}
+};
 
 </script>
 
@@ -686,58 +686,57 @@ $(document).ready(function() {
   var flipSound = document.getElementById("flipSound");
   // Sesin yalnızca kartın ön yüzüne tıklandığında çalmasını sağlayın.
   $(".card__front").click(function() {
-    console.log('Kart önüne tıklandı', event.target);
-    flipSound.currentTime = 0;
-    flipSound.play();
-	console.log('dönüş sesi çalındı', event.target);
+
+	flipSound.currentTime = 0;
+	flipSound.play();
+
   });
 
   
   $(".card").click(function() {
-    var card = $(this);
-    var cardId = card.find(".card__num").text();
-    console.log(cardId);
-   
+	var card = $(this);
+	var cardId = card.find(".card__num").text();
+
 	
-    // Check if the card is not already flipping to avoid multiple flips
-    if (!card.hasClass('flipping')) {
-      card.addClass('flipping');
+	// Check if the card is not already flipping to avoid multiple flips
+	if (!card.hasClass('flipping')) {
+	  card.addClass('flipping');
 
-      // Check if the front side is facing the viewer
-      if (!card.hasClass("flipped")) {
-       
-        console.log("is card flag true or false", cardId);
+	  // Check if the front side is facing the viewer
+	  if (!card.hasClass("flipped")) {
+	   
 
-        if (!cardFlags[cardId]) {
-          startAnimation(div); 
-          console.log("started");
-          cardFlags[cardId] = true; 
-          card.addClass("flipped");
+
+		if (!cardFlags[cardId]) {
+		  startAnimation(div); 
+
+		  cardFlags[cardId] = true; 
+		  card.addClass("flipped");
 		}
-        
-        // Adding canvas to back-side 
-        var div = document.querySelector('.flipped .card__flipper.active .card__back');
-        var canvas = document.getElementsByClassName('p5Canvas')[0];
-        if (div && canvas) {
-          div.appendChild(canvas);
-          canvas.style.position = 'absolute';
-        }
-      } else {
-       
-        console.log("stopped");
-        card.removeClass("flipped");
 		
-      }
+		// Adding canvas to back-side 
+		var div = document.querySelector('.flipped .card__flipper.active .card__back');
+		var canvas = document.getElementsByClassName('p5Canvas')[0];
+		if (div && canvas) {
+		  div.appendChild(canvas);
+		  canvas.style.position = 'absolute';
+		}
+	  } else {
+	   
 
-      setTimeout(function() {
-        card.removeClass('flipping');
-      }, 1000); // Adjust the timeout to match your animation duration
-    }
+		card.removeClass("flipped");
+		
+	  }
+
+	  setTimeout(function() {
+		card.removeClass('flipping');
+	  }, 1000); 
+	}
   });
 
   // Prevent sound on back side click
   $(".card__back").click(function(e) {
-    e.stopPropagation();
+	e.stopPropagation();
   });
 });
 
@@ -745,15 +744,21 @@ $(document).ready(function() {
 
 
 <script>
-    // Body's hoover effect
-    document.getElementById("gameCardLink").addEventListener("mouseover", function() {
-        document.body.classList.add("hoverEffect");
-    });
+	// Body's hoover effect
+	document.getElementById("gameCardLink").addEventListener("mouseover", function() {
+		document.body.classList.add("hoverEffect");
+	});
 
-    document.getElementById("gameCardLink").addEventListener("mouseout", function() {
-        document.body.classList.remove("hoverEffect");
-    });
+	document.getElementById("gameCardLink").addEventListener("mouseout", function() {
+		document.body.classList.remove("hoverEffect");
+	});
 </script>
+
+<script>
+	let ind = document.getElementsByClassName("card");
+	ind.forEach(c=> c.addEventListener('click', ))
+
+	</script>
 
 
 <script>
@@ -761,215 +766,259 @@ $(document).ready(function() {
 // Portal effect
 var p5Instance;
 function startAnimation(div) {
-    // adding canvas to back-side 
-	var canvas = document.getElementsByClassName('p5Canvas')[0];
-    if (div && canvas) {
-        div.appendChild(canvas);
-        canvas.style.position = 'absolute';
-    }
+// adding canvas to back-side 
+var canvas = document.getElementsByClassName('p5Canvas')[0];
+if (div && canvas) {
+	div.appendChild(canvas);
+	canvas.style.position = 'absolute';
+}
 
-    const sketch = (p) => {
+const sketch = (p) => {
 
-        const createParticleSystem = (location) => {
-            const origin = location.copy();
-            const particles = [];
-            const addParticle = velocity => {
-                const rand = p.random(0, 1);
-                if (rand <= .3) {
-                    particles.push(createSparkParticle(origin, velocity.copy()));
-                } else {
-                    particles.push(createParticle(origin, velocity.copy()));
-                }
-            };
-            const applyForce = force => {
-                particles.forEach(particle => {
-                    particle.applyForce(force);
-                });
-            };
-            const run = () => {
-                particles.forEach((particle, index) => {
-                    particle.move();
-                    particle.draw();
+	const createParticleSystem = (location) => {
+		const origin = location.copy();
+		const particles = [];
+		const addParticle = velocity => {
+			const rand = p.random(0, 1);
+			if (rand <= .3) {
+				particles.push(createSparkParticle(origin, velocity.copy()));
+			} else {
+				particles.push(createParticle(origin, velocity.copy()));
+			}
+		};
+		const applyForce = force => {
+			particles.forEach(particle => {
+				particle.applyForce(force);
+			});
+		};
+		const run = () => {
+			particles.forEach((particle, index) => {
+				particle.move();
+				particle.draw();
 
-                    if (particle.isDead()) {
-                        particles.splice(index, 1);
-                    }
-                });
-            };
-            return {
-                origin,
-                addParticle,
-                run,
-                applyForce
-            };
-        };
+				if (particle.isDead()) {
+					particles.splice(index, 1);
+				}
+			});
+		};
+		return {
+			origin,
+			addParticle,
+			run,
+			applyForce
+		};
+	};
 
-        const createSparkParticle = (locationP, velocity) => {
-            const particle = createParticle(locationP, velocity);
-            let fade = 255;
-            const draw = () => {
-                p.colorMode(p.HSB);
-                p.stroke(16, 62, 100, fade);
-                const arrow = velocity.copy().normalize().mult(p.random(2, 4));
-                const direction = p5.Vector.add(particle.location, arrow);
-                p.line(particle.location.x, particle.location.y, direction.x, direction.y);
-            };
-            const move = () => {
-                particle.applyForce(p.createVector(p.random(-.2, .2), p.random(-0.1, -0.4)));
-                particle.velocity.add(particle.acc);
-                particle.location.add(particle.velocity.copy().normalize().mult(p.random(2, 4)));
-                particle.acc.mult(0);
-                fade -= 5;
-            };
-            return {
-                ...particle,
-                draw,
-                move
-            }
-        }
+	const createSparkParticle = (locationP, velocity) => {
+		const particle = createParticle(locationP, velocity);
+		let fade = 255;
+		const draw = () => {
+			p.colorMode(p.HSB);
+			p.stroke(16, 62, 100, fade);
+			const arrow = velocity.copy().normalize().mult(p.random(2, 4));
+			const direction = p5.Vector.add(particle.location, arrow);
+			p.line(particle.location.x, particle.location.y, direction.x, direction.y);
+		};
+		const move = () => {
+			particle.applyForce(p.createVector(p.random(-.2, .2), p.random(-0.1, -0.4)));
+			particle.velocity.add(particle.acc);
+			particle.location.add(particle.velocity.copy().normalize().mult(p.random(2, 4)));
+			particle.acc.mult(0);
+			fade -= 5;
+		};
+		return {
+			...particle,
+			draw,
+			move
+		}
+	}
 
-        const createParticle = (locationP, velocity) => {
-            const acc = p.createVector(0, 0);
-            const location = locationP.copy();
-            let fade = 255;
-            const fadeMinus = p.randomGaussian(15, 2);
-            let ligther = 100;
-            let situate = 62;
-            const draw = () => {
-                p.colorMode(p.HSB)
-                p.stroke(16, p.constrain(situate, 62, 92), p.constrain(ligther, 60, 100), fade);
-                const arrow = velocity.copy().mult(2);
-                const direction = p5.Vector.add(location, arrow);
-                p.line(location.x, location.y, direction.x, direction.y);
-            };
-            const move = () => {
-                velocity.add(acc);
-                location.add(velocity.copy().div(p.map(velocity.mag(), 18, 0, 5, 1)));
-                acc.mult(0);
-                fade -= fadeMinus;
-                ligther -= 8;
-                situate += 8;
-            };
-            const applyForce = force => {
-                acc.add(force);
-            };
-            const isDead = () => {
-                if (fade < 0 || location.x < 0 || location.x > p.width || location.y > p.height) {
-                    return true;
-                } else {
-                    return false;
-                }
-            };
-            return {
-                draw,
-                move,
-                applyForce,
-                isDead,
-                velocity,
-                location,
-                acc
-            };
-        };
+	const createParticle = (locationP, velocity) => {
+		const acc = p.createVector(0, 0);
+		const location = locationP.copy();
+		let fade = 255;
+		const fadeMinus = p.randomGaussian(15, 2);
+		let ligther = 100;
+		let situate = 62;
+		const draw = () => {
+			p.colorMode(p.HSB)
+			p.stroke(16, p.constrain(situate, 62, 92), p.constrain(ligther, 60, 100), fade);
+			const arrow = velocity.copy().mult(2);
+			const direction = p5.Vector.add(location, arrow);
+			p.line(location.x, location.y, direction.x, direction.y);
+		};
+		const move = () => {
+			velocity.add(acc);
+			location.add(velocity.copy().div(p.map(velocity.mag(), 18, 0, 5, 1)));
+			acc.mult(0);
+			fade -= fadeMinus;
+			ligther -= 8;
+			situate += 8;
+		};
+		const applyForce = force => {
+			acc.add(force);
+		};
+		const isDead = () => {
+			if (fade < 0 || location.x < 0 || location.x > p.width || location.y > p.height) {
+				return true;
+			} else {
+				return false;
+			}
+		};
+		return {
+			draw,
+			move,
+			applyForce,
+			isDead,
+			velocity,
+			location,
+			acc
+		};
+	};
 
-        const createMover = () => {
-            const location = p.createVector(p.width / 2, p.height / 2);
-            const velocity = p.createVector(0, 0);
-            const acc = p.createVector(0, 0);
-            const mass = 10;
-            let angle = 0;
-            let angleVelocity = 0;
-            let angleAcc = 0;
-            let len = 100;
-            const particleSystems = [
-                createParticleSystem(location),
-                createParticleSystem(location),
-                createParticleSystem(location),
-                createParticleSystem(location),
-                createParticleSystem(location),
-                createParticleSystem(location),
-                createParticleSystem(location),
-                createParticleSystem(location),
-                createParticleSystem(location)
-            ];
-            const getGotoVector = angle => {
-                const radius = p.map(angleVelocity, 0, 0.3, 0, 80);
-                const goToVector = p.createVector(
-                    location.x + radius * p.cos(angle),
-                    location.y + radius * p.sin(angle)
-                );
-                return goToVector;
-            };
-            const draw = () => {
-                const goToVector = getGotoVector(angle);
-                particleSystems.forEach(particleSystem => {
-                    particleSystem.run();
-                });
-            };
-            const renderParticleSystem = () => {
-                particleSystems.forEach(particleSystem => {
-                    const goToVector = getGotoVector(angle - p.random(0, p.TWO_PI));
-                    const prepencular = p.createVector(
-                     (goToVector.y - location.y)*-1,
-                    (goToVector.x - location.x)
-                    );
-                    prepencular.normalize();
-                    prepencular.mult(angleVelocity * 70);
-                    particleSystem.origin.set(goToVector);
-                    particleSystem.addParticle(prepencular);
-                    const gravity = p.createVector(0, 0.3);
-                    particleSystem.applyForce(gravity);
-                });
-            };
-            const move = () => {
-              
-                angleAcc = 0.005;
-                angleVelocity = p.constrain(angleVelocity + angleAcc, 0, 0.32);
-                angle += angleVelocity;
-                angleAcc = 0;
-                renderParticleSystem();
-            };
-            return {
-                draw,
-                move
-            };
-        };
+	const createMover = () => {
+		const location = p.createVector(p.width / 2, p.height / 2);
+		const velocity = p.createVector(0, 0);
+		const acc = p.createVector(0, 0);
+		const mass = 10;
+		let angle = 0;
+		let angleVelocity = 0;
+		let angleAcc = 0;
+		let len = 100;
+		const particleSystems = [
+			createParticleSystem(location),
+			createParticleSystem(location),
+			createParticleSystem(location),
+			createParticleSystem(location),
+			createParticleSystem(location),
+			createParticleSystem(location),
+			createParticleSystem(location),
+			createParticleSystem(location),
+			createParticleSystem(location)
+		];
+		const getGotoVector = angle => {
+			const radius = p.map(angleVelocity, 0, 0.3, 0, 80);
+			const goToVector = p.createVector(
+				location.x + radius * p.cos(angle),
+				location.y + radius * p.sin(angle)
+			);
+			return goToVector;
+		};
+		const draw = () => {
+			const goToVector = getGotoVector(angle);
+			particleSystems.forEach(particleSystem => {
+				particleSystem.run();
+			});
+		};
+		const renderParticleSystem = () => {
+			particleSystems.forEach(particleSystem => {
+				const goToVector = getGotoVector(angle - p.random(0, p.TWO_PI));
+				const prepencular = p.createVector(
+				 (goToVector.y - location.y)*-1,
+				(goToVector.x - location.x)
+				);
+				prepencular.normalize();
+				prepencular.mult(angleVelocity * 70);
+				particleSystem.origin.set(goToVector);
+				particleSystem.addParticle(prepencular);
+				const gravity = p.createVector(0, 0.3);
+				particleSystem.applyForce(gravity);
+			});
+		};
+		const move = () => {
+		  
+			angleAcc = 0.005;
+			angleVelocity = p.constrain(angleVelocity + angleAcc, 0, 0.32);
+			angle += angleVelocity;
+			angleAcc = 0;
+			renderParticleSystem();
+		};
+		return {
+			draw,
+			move
+		};
+	};
 
-        let mover;
+	let mover;
 
-        p.setup = function() {
-            p.createCanvas(230, 320);
-            p.clear(); 
-            mover = createMover();
-        }
+	p.setup = function() {
+		p.createCanvas(230, 320);
+		p.clear(); 
+		mover = createMover();
+	}
 
-        p.draw = function() {
-            p.clear();
-            mover.move();
-            mover.draw();
-        }
-    };
+	p.draw = function() {
+		p.clear();
+		mover.move();
+		mover.draw();
+	}
+};
 
-    p5Instance = new p5(sketch);
+p5Instance = new p5(sketch);
 }
 
 </script>
 
 
+
 <script>
 // hiding and showing loading animation
   function hideLoadingAnimation() {
-  console.log("Yükleme animasyonu gizleniyor, ana içerik gösteriliyor");
+
   var loadingAnimation = document.getElementById("loading-animation");
   var mainContent = document.getElementById("main-content");
   loadingAnimation.style.display = "none";
   mainContent.style.display = "block";
 }
 window.onload = function() {
-  console.log("Sayfa tamamen yüklendi");
+
   hideLoadingAnimation();
 };
 
 </script>
 
 
+<script>
+	    let xt, yt;
+	    document.addEventListener('click', ()=>{
+		let cord = document.getElementsByClassName('active')[1].style.transform; 
+		[cx,cy,...rest]= cord.slice(12).split('px, ');
+		console.log(cx,cy)
+	})
+</script>
+
+<script> 
+    $('.card').on( "mouseenter", onHover).on( "mouseleave", onHoverTime );
+</script>
+
+<script>
+	$(document.body).on('click', function(){
+		if ($("#batman").off( "mouseenter", onHover)){
+			$('#batman, #flash').hover(onHover, onHoverTime);
+			console.log('yes');
+			}            
+	})
+</script>
+	
+<script>
+$(".card").click(function(){
+		let cord = document.getElementsByClassName('active')[1].style.transform; 
+		[cx,cy,...rest]= cord.slice(12).split('px, ');
+		console.log(cx,cy);
+		if ((cy<=300)&&(cy>=100)||((cy>(-300))&&(cy<(-60)))){
+ 
+		    $("#batman").off( "mouseenter", onHover);
+		    $("#flash").off( "mouseenter", onHover);
+			
+			console.log('offed');
+			let hoverTimeout;
+		}
+		else{
+			console.log('on');
+			$('#batman, #flash').hover(onHover, onHoverTime);
+		}
+		
+	});
+</script>
+	
 </html>
