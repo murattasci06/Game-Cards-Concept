@@ -8,9 +8,6 @@
   <link rel="icon" type="image/png" href="https://cdn1.iconfinder.com/data/icons/entertainment-events-hobbies/24/card-game-cards-hold-512.png">
   
 <style>
-.card-partially-visible {
-  pointer-events: none;
-}
 
 #main-content {
   display: none;
@@ -135,8 +132,6 @@ ul {
   justify-content: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 
- 
-  
 }
 .card__back span {
   font-weight: bold; /* Metni kalın yap */
@@ -248,16 +243,11 @@ a::before {
 	transform: translate(-50%, -50%); 
 	width: 50px;
 	height: 45px;
-   
-	
 	border-radius: 50%; /* Eğer bir daire şeklinde efekt isteniyorsa */
 	box-shadow: 0 0 8px 4px rgba(110, 110, 110, 0.8); 
-	
-	
-	filter: blur(4px) brightness(1.5); /
+	filter: blur(4px) brightness(1.5); 
 	opacity: 0;
 	transition: opacity 0.3s ease, transform 0.3s ease;
-  
 	z-index: -1;
 }
 
@@ -317,8 +307,6 @@ body.hoverEffect {
   z-index: 9999;
  }
 
-
-
 .loader {
 
   border-top: 9px solid #00a2ed;
@@ -337,14 +325,8 @@ body.hoverEffect {
   100% { transform: rotate(360deg); }
 }
 
-
-
-
-</style>
-   
+</style> 
 </head>
-
-
 
 
 
@@ -365,8 +347,6 @@ body.hoverEffect {
 <audio id="flipSound" preload="auto">
   <source src="https://cdn.freesound.org/previews/321/321114_2776777-lq.ogg" type="audio/wav">
 </audio>
-
-
 
 <main>
    <div id="gameCardLink">
@@ -597,7 +577,7 @@ var Flipper = (function() {
 
 	var transX = xc - offset.left - cardW;
 	var transY = docScroll + yc - offset.top - cardH;
-//     if (offset.top > card.height()) transY = docScroll - offset.top + cardH;
+   // if (offset.top > card.height()) transY = docScroll - offset.top + cardH;
 	if (win.width() <= 700) transY = 0;
 	
 	if (card.hasClass('active')) unflip();
@@ -644,8 +624,7 @@ Flipper.init();
 
 
 <script>
-<!-- HOOVER FOR TRAILER -->
-
+<!-- HOVER FOR TRAILER -->
 var hoverTimeout;
 
 function onHover() {
@@ -684,7 +663,6 @@ var cardFlags = {};
 
 $(document).ready(function() {
   var flipSound = document.getElementById("flipSound");
-  // Sesin yalnızca kartın ön yüzüne tıklandığında çalmasını sağlayın.
   $(".card__front").click(function() {
 
 	flipSound.currentTime = 0;
@@ -754,11 +732,7 @@ $(document).ready(function() {
 	});
 </script>
 
-<script>
-	let ind = document.getElementsByClassName("card");
-	ind.forEach(c=> c.addEventListener('click', ))
 
-	</script>
 
 
 <script>
@@ -962,7 +936,7 @@ p5Instance = new p5(sketch);
 
 
 <script>
-// hiding and showing loading animation
+// Hiding and showing of loading animation
   function hideLoadingAnimation() {
 
   var loadingAnimation = document.getElementById("loading-animation");
@@ -978,47 +952,39 @@ window.onload = function() {
 </script>
 
 
-<script>
-	    let xt, yt;
-	    document.addEventListener('click', ()=>{
-		let cord = document.getElementsByClassName('active')[1].style.transform; 
-		[cx,cy,...rest]= cord.slice(12).split('px, ');
-		console.log(cx,cy)
-	})
-</script>
 
 <script> 
+    // The conditions of the hover function.
     $('.card').on( "mouseenter", onHover).on( "mouseleave", onHoverTime );
-</script>
-
-<script>
+	
+	// hover events removing and assigning
 	$(document.body).on('click', function(){
 		if ($("#batman").off( "mouseenter", onHover)){
 			$('#batman, #flash').hover(onHover, onHoverTime);
 			console.log('yes');
-			}            
-	})
-</script>
-	
-<script>
-$(".card").click(function(){
-		let cord = document.getElementsByClassName('active')[1].style.transform; 
-		[cx,cy,...rest]= cord.slice(12).split('px, ');
-		console.log(cx,cy);
-		if ((cy<=300)&&(cy>=100)||((cy>(-300))&&(cy<(-60)))){
- 
-		    $("#batman").off( "mouseenter", onHover);
-		    $("#flash").off( "mouseenter", onHover);
+			} })
 			
-			console.log('offed');
-			let hoverTimeout;
-		}
-		else{
-			console.log('on');
-			$('#batman, #flash').hover(onHover, onHoverTime);
-		}
+	     // overlap boundary conditions for hover on off
+    $(".card").click(function(){
+	let cord = document.getElementsByClassName('active')[1].style.transform; 
+	[cx,cy,...rest]= cord.slice(12).split('px, ');
+	console.log(`cx: ${cx}, cy: ${cy}`);
+	if ((cy<=300)&&(cy>=100)||((cy>(-300))&&(cy<(-60)))){
+
+		$("#batman").off( "mouseenter", onHover);
+		$("#flash").off( "mouseenter", onHover);
 		
-	});
+		console.log('offed');
+		let hoverTimeout;
+	}
+	else{
+		console.log('on');
+		$('#batman, #flash').hover(onHover, onHoverTime);
+	}
+	
+});		
+				
 </script>
+
 	
 </html>
