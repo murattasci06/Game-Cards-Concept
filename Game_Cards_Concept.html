@@ -384,7 +384,7 @@ body.hoverEffect {
 	  <iframe class="frame" 
 	  width="225"
 	  height="340"
-	  src="https://www.youtube.com/embed/JfVOs4VSpmA?autoplay=1&mute=1&vq=hd1080"
+	  src="https://www.youtube.com/embed/JfVOs4VSpmA?&mute=1&vq=hd1080"
 	  title="YouTube video player"
 	  frameborder="0"
 	  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -415,7 +415,7 @@ body.hoverEffect {
 		<iframe class="frame" 
 		width="225"
 		height="340"
-		src="https://www.youtube.com/embed/mqqft2x_Aa4?autoplay=1&mute=1&vq=hd1080"
+		src="https://www.youtube.com/embed/mqqft2x_Aa4?&mute=1&vq=hd1080"
 		title="YouTube video player"
 		frameborder="0"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -444,7 +444,7 @@ body.hoverEffect {
 		<iframe class="frame" 
 		width="225"
 		height="340"
-		src="https://www.youtube.com/embed/u3V5KDHRQvk?autoplay=1&mute=1&vq=hd1080"
+		src="https://www.youtube.com/embed/u3V5KDHRQvk?&mute=1&vq=hd1080"
 		title="YouTube video player"
 		frameborder="0"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -474,7 +474,7 @@ body.hoverEffect {
 		<iframe class="frame" 
 		width="225"
 		height="340"
-		src="https://www.youtube.com/embed/AIc671o9yCI?autoplay=1&mute=1&vq=hd1080"
+		src="https://www.youtube.com/embed/AIc671o9yCI?&mute=1&vq=hd1080"
 		title="YouTube video player"
 		frameborder="0"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -504,7 +504,7 @@ body.hoverEffect {
 		<iframe class="frame" 
 		width="225"
 		height="340"
-		src="https://www.youtube.com/embed/hebWYacbdvc?autoplay=1&mute=1&vq=hd1080"
+		src="https://www.youtube.com/embed/hebWYacbdvc?&mute=1&vq=hd1080"
 		title="YouTube video player"
 		frameborder="0"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -534,7 +534,7 @@ body.hoverEffect {
 		<iframe class="frame" 
 		width="225"
 		height="340"
-		src="https://www.youtube.com/embed/aWzlQ2N6qqg?autoplay=1&mute=1&vq=hd1080"
+		src="https://www.youtube.com/embed/aWzlQ2N6qqg?&mute=1&vq=hd1080"
 		title="YouTube video player"
 		frameborder="0"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -625,35 +625,42 @@ Flipper.init();
 
 <script>
 <!-- HOVER FOR TRAILER -->
-var hoverTimeout;
+var hoverTimeout = {}; // an object to store timeout id
 
 function onHover() {
-	const currentCard = $(this); 
+  const currentCard = $(this);
 
-	hoverTimeout = setTimeout(() => {
-		currentCard.find('.card__front').hide();
-		currentCard.find('.iframe').show();
-		var src = currentCard.find('.iframe').attr("src");
-		currentCard.find('.iframe').attr("src", src);
+  if (hoverTimeout[currentCard.attr('id')] === undefined) {
+    hoverTimeout[currentCard.attr('id')] = []; // initialize timeout id array according to element id
+  }
 
-	 
-		currentCard.find('.iframe').on('click', function() {
-			$(this).requestFullscreen();
-		});
+  hoverTimeout[currentCard.attr('id')].push(setTimeout(() => {
+    currentCard.find('.card__front').hide();
+    currentCard.find('iframe').show();
+    var src = currentCard.find('iframe').attr("src");
+    currentCard.find('iframe').attr("src", src + '&autoplay=1');
 
-	}, 5000); // 5000 milliseconds (5 seconds)
- 
+    currentCard.find('iframe').on('click', function() {
+      $(this).requestFullscreen();
+    });
+
+  }, 5000)); // 5000 milliseconds (5 seconds)
 }
-function onHoverTime() {
-	clearTimeout(hoverTimeout); // Clear the timeout to prevent actions if the user moves away before 5 seconds
 
-	$(this).find('.card__front').show();
-	$(this).find('.iframe').hide();
-	var src = $(this).find('.iframe').attr("src");
-	if (src) {
-		$(this).find('.iframe').attr("src", src.replace('?autoplay=1', ''));
-	}
-};
+
+function onHoverTime() {
+  while (hoverTimeout[$(this).attr('id')].length > 0) {
+    clearTimeout(hoverTimeout[$(this).attr('id')][0]); // Clear the timeout to prevent actions if the user moves away before 5 seconds
+    hoverTimeout[$(this).attr('id')].shift();
+  }
+
+  $(this).find('.card__front').show();
+
+  var src = $(this).find('iframe').attr("src");
+  if (src) {
+    $(this).find('iframe').attr("src", src.replace('?autoplay=1', ''));
+  }
+}
 
 </script>
 
