@@ -1,0 +1,108 @@
+<html>
+<style>
+#bar {
+  position: fixed; /* Fixed position to stay in place on scroll */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px; /* Initial width of the bar */
+  background-color: #f1f1f1; /* Background of the bar */
+  border-right: 1px solid #d3d3d3; /* Border of the bar */
+  z-index: 9;
+}
+
+#handle {
+  width: 100px; /* Diameter of the handle circle */
+  height: 100px; /* Height of the handle circle */
+  background-color: #2196F3;
+  border-radius: 50%; /* Make it round */
+  position: absolute; /* Absolute position within the bar div */
+  top: 50%; /* Center it vertically */
+  right: -3.125em; /* Align to the right of the bar */
+  transform: translateY(-50%); /* Adjust vertical position */
+  cursor: pointer; /* Change cursor to indicate it's draggable */
+  z-index: 10;
+  clip-path: inset(0 0 0 50%); /* Clip left half of the circle */
+  background-image: url('https://i.gifer.com/2P5x.gif');
+  background-repeat: no-repeat;
+  background-size: 90% 100%; /* Width and height values */
+  background-position: calc(100% +  0.625em) center; /* Move the image to the right by 10 pixels from the edge */
+}
+
+#handle.blue-bg {
+    background-image: url('https://virtualisedreality.files.wordpress.com/2012/07/the-best-top-desktop-blue-wallpapers-blue-wallpaper-blue-background-hd-33.jpg');
+    background-position-x: right;
+}
+
+</style>
+<body>
+
+
+<div id="bar">
+  <!-- This is the draggable handle -->
+  <div id="handle"></div>
+</div>
+
+<script>
+// Make the handle draggable
+dragElement(document.getElementById("handle"));
+
+window.addEventListener("resize", function() {
+    // call again the function if window is resize so it gets the updated window width
+    dragElement(document.getElementById("handle"));
+});
+
+
+function dragElement(elmnt) {
+  var startPosX = 0, currentPosX = 0;
+  var maxBarWidth = window.innerWidth - (elmnt.offsetWidth / 16); // Using the width of the browser window
+
+  elmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    startPosX = e.clientX;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+  e = e || window.event;
+  e.preventDefault();
+  currentPosX = e.clientX - startPosX;
+  startPosX = e.clientX;
+  var bar = document.getElementById("bar");
+  var newWidth = bar.clientWidth + currentPosX;
+  //console.log(`newWidth = ${bar.clientWidth} + ${currentPosX} = ${newWidth}`)
+  
+  // Define the minimum width to keep the handle from entering the bar area
+  var minBarWidth = 3; // This is the initial width of the bar
+
+  // Restrict the width within the minimum and maximum bounds
+  newWidth = Math.max(minBarWidth, Math.min(newWidth, maxBarWidth));
+
+  // Set the new width
+  bar.style.width = newWidth + "px";
+
+  var handle = document.getElementById("handle");
+
+   // Adding or removing the 'blue-bg' class based on the handle's position
+    if (newWidth >= maxBarWidth) {
+        handle.classList.add('blue-bg');
+    } else {
+        handle.classList.remove('blue-bg');
+    }
+
+}
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+
+</body>
+</html>
