@@ -15,18 +15,18 @@
   width: 100px; /* Diameter of the handle circle */
   height: 100px; /* Height of the handle circle */
   background-color: #2196F3;
-  border-radius: 50%; /* Make it round */
+  border-radius: 50%; /* Making it round */
   position: absolute; /* Absolute position within the bar div */
-  top: 50%; /* Center it vertically */
-  right: -3.125em; /* Align to the right of the bar */
-  transform: translateY(-50%); /* Adjust vertical position */
-  cursor: pointer; /* Change cursor to indicate it's draggable */
+  top: 50%; /* Centering it vertically */
+  right: -3.125em; /* Aligning to the right of the bar */
+  transform: translateY(-50%); /* Adjusting vertical position */
+  cursor: pointer; /* Changing cursor to indicate it's draggable */
   z-index: 10;
-  clip-path: inset(0 0 0 50%); /* Clip left half of the circle */
+  clip-path: inset(0 0 0 50%); /* Clipping left half of the circle */
   background-image: url('https://i.gifer.com/2P5x.gif');
   background-repeat: no-repeat;
   background-size: 90% 100%; /* Width and height values */
-  background-position: calc(100% +  0.625em) center; /* Move the image to the right by 10 pixels from the edge */
+  background-position: calc(100% +  0.625em) center; /* Moving the image to the right by 10 pixels from the edge */
 }
 
 #handle.blue-bg {
@@ -39,16 +39,16 @@
 
 
 <div id="bar">
-  <!-- This is the draggable handle -->
+  <!-- draggable handle -->
   <div id="handle"></div>
 </div>
 
 <script>
-// Make the handle draggable
+// Making the handle draggable
 dragElement(document.getElementById("handle"));
 
 window.addEventListener("resize", function() {
-    // call again the function if window is resize so it gets the updated window width
+    // calling again the function if window is resize so it gets the updated window width
     dragElement(document.getElementById("handle"));
 });
 
@@ -76,13 +76,13 @@ function dragElement(elmnt) {
   var newWidth = bar.clientWidth + currentPosX;
   //console.log(`newWidth = ${bar.clientWidth} + ${currentPosX} = ${newWidth}`)
   
-  // Define the minimum width to keep the handle from entering the bar area
+  // Defining the minimum width to keep the handle from entering the bar area
   var minBarWidth = 3; // This is the initial width of the bar
 
-  // Restrict the width within the minimum and maximum bounds
+  // Restricting the width within the minimum and maximum bounds
   newWidth = Math.max(minBarWidth, Math.min(newWidth, maxBarWidth));
 
-  // Set the new width
+  // Setting the new width
   bar.style.width = newWidth + "px";
 
   var handle = document.getElementById("handle");
@@ -97,7 +97,7 @@ function dragElement(elmnt) {
 }
 
   function closeDragElement() {
-    // stop moving when mouse button is released:
+    // stopping moving when mouse button is released:
     document.onmouseup = null;
     document.onmousemove = null;
   }
