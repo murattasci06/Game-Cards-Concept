@@ -134,7 +134,7 @@ ul {
 
 }
 .card__back span {
-  font-weight: bold; /* Metni kalın yap */
+  font-weight: bold; 
   color: white; /* Beyaz renk */
   font-size: 16px;
   position: absolute;
@@ -238,12 +238,12 @@ a {
 a::before {
 	content: '';
 	position: absolute;
-	top: 50%; /* Orta konumu */
-	left: 50%; /* Orta konumu */
+	top: 50%; 
+	left: 50%;
 	transform: translate(-50%, -50%); 
 	width: 50px;
 	height: 45px;
-	border-radius: 50%; /* Eğer bir daire şeklinde efekt isteniyorsa */
+	border-radius: 50%; /* setting circle effect */
 	box-shadow: 0 0 8px 4px rgba(110, 110, 110, 0.8); 
 	filter: blur(4px) brightness(1.5); 
 	opacity: 0;
@@ -317,7 +317,7 @@ body.hoverEffect {
   position: absolute; 
   left: 44%; 
   top: 46%; /
-  transform: translate(-50%, -50%) rotate(0deg); /* Yuvarlak halkanın tam ortasında olması için bu dönüşümü kullanın. */
+  transform: translate(-50%, -50%) rotate(0deg); /* the transformation required for the circular ring to be exactly in the middle. */
   }
 
 @keyframes spin {
@@ -354,7 +354,7 @@ body.hoverEffect {
 	  <span>a</span>
 	  <span>m</span>
 	  <span>e</span>
-	  <span> </span> <!-- Boşluk eklemek için span ekledik -->
+	  <span> </span> <!-- span for blank -->
 	  <span> </span>
 	  <span>C</span>
 	  <span> </span>
@@ -545,7 +545,7 @@ body.hoverEffect {
 	  <div class="card__back">
 		<svg height="180" width="180">
 		  <circle cx="90" cy="90" r="65" stroke="#aa9e5c" stroke-width="35"/>
-		  <!-- Dış dairenin kenarı (yeşil) -->
+		  <!-- Edge of outer circle (green) -->
 		  <circle cx="90" cy="90" r="83" fill="none" stroke="rgba(7, 50, 22, 255)" stroke-width="1" />
 		</svg>
 		<span>955.8 Mil. $</span>
@@ -631,7 +631,7 @@ function onHover() {
   const currentCard = $(this);
 
   if (hoverTimeout[currentCard.attr('id')] === undefined) {
-    hoverTimeout[currentCard.attr('id')] = []; // initialize timeout id array according to element id
+    hoverTimeout[currentCard.attr('id')] = []; // initializing timeout id array according to element id
   }
 
   hoverTimeout[currentCard.attr('id')].push(setTimeout(() => {
@@ -650,7 +650,7 @@ function onHover() {
 
 function onHoverTime() {
   while (hoverTimeout[$(this).attr('id')].length > 0) {
-    clearTimeout(hoverTimeout[$(this).attr('id')][0]); // Clear the timeout to prevent actions if the user moves away before 5 seconds
+    clearTimeout(hoverTimeout[$(this).attr('id')][0]); // clearing the timeout to prevent actions if the user moves away before 5 seconds
     hoverTimeout[$(this).attr('id')].shift();
   }
 
@@ -683,11 +683,11 @@ $(document).ready(function() {
 	var cardId = card.find(".card__num").text();
 
 	
-	// Check if the card is not already flipping to avoid multiple flips
+	// checking if the card is not already flipping to avoid multiple flips
 	if (!card.hasClass('flipping')) {
 	  card.addClass('flipping');
 
-	  // Check if the front side is facing the viewer
+	  // checking if the front side is facing the viewer
 	  if (!card.hasClass("flipped")) {
 	   
 
@@ -699,7 +699,7 @@ $(document).ready(function() {
 		  card.addClass("flipped");
 		}
 		
-		// Adding canvas to back-side 
+		// adding canvas to back-side 
 		var div = document.querySelector('.flipped .card__flipper.active .card__back');
 		var canvas = document.getElementsByClassName('p5Canvas')[0];
 		if (div && canvas) {
@@ -719,7 +719,7 @@ $(document).ready(function() {
 	}
   });
 
-  // Prevent sound on back side click
+  // preventing sound on back side click
   $(".card__back").click(function(e) {
 	e.stopPropagation();
   });
@@ -729,7 +729,7 @@ $(document).ready(function() {
 
 
 <script>
-	// Body's hoover effect
+	// body's hoover effect
 	document.getElementById("gameCardLink").addEventListener("mouseover", function() {
 		document.body.classList.add("hoverEffect");
 	});
@@ -744,7 +744,7 @@ $(document).ready(function() {
 
 <script>
 
-// Portal effect
+// portal effect
 var p5Instance;
 function startAnimation(div) {
 // adding canvas to back-side 
@@ -943,7 +943,7 @@ p5Instance = new p5(sketch);
 
 
 <script>
-// Hiding and showing of loading animation
+// hiding and showing of loading animation
   function hideLoadingAnimation() {
 
   var loadingAnimation = document.getElementById("loading-animation");
@@ -961,7 +961,7 @@ window.onload = function() {
 
 
 <script> 
-    // The conditions of the hover function.
+    // the conditions of the hover function.
     $('.card').on( "mouseenter", onHover).on( "mouseleave", onHoverTime );
 	
 	// hover events removing and assigning
@@ -971,7 +971,7 @@ window.onload = function() {
 			console.log('yes');
 			} })
 			
-	     // overlap boundary conditions for hover on off
+    // overlap boundary conditions for hover on/off
     $(".card").click(function(){
 	let cord = document.getElementsByClassName('active')[1].style.transform; 
 	[cx,cy,...rest]= cord.slice(12).split('px, ');
