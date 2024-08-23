@@ -5,28 +5,28 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: 3px; /* Initial width of the bar */
-  background-color: #f1f1f1; /* Background of the bar */
-  border-right: 1px solid #d3d3d3; /* Border of the bar */
+  width: 3px; /* initial width of the bar */
+  background-color: #f1f1f1; /* background of the bar */
+  border-right: 1px solid #d3d3d3; /* border of the bar */
   z-index: 9;
 }
 
 #handle {
-  width: 100px; /* Diameter of the handle circle */
-  height: 100px; /* Height of the handle circle */
+  width: 100px; /* diameter of the handle circle */
+  height: 100px; /* height of the handle circle */
   background-color: #2196F3;
-  border-radius: 50%; /* Making it round */
-  position: absolute; /* Absolute position within the bar div */
-  top: 50%; /* Centering it vertically */
-  right: -3.125em; /* Aligning to the right of the bar */
-  transform: translateY(-50%); /* Adjusting vertical position */
-  cursor: pointer; /* Changing cursor to indicate it's draggable */
+  border-radius: 50%; /* making it round */
+  position: absolute; /* absolute position within the bar div */
+  top: 50%; /* centering it vertically */
+  right: -3.125em; /* aligning to the right of the bar */
+  transform: translateY(-50%); /* adjusting vertical position */
+  cursor: pointer; /* changing cursor to indicate it's draggable */
   z-index: 10;
-  clip-path: inset(0 0 0 50%); /* Clipping left half of the circle */
+  clip-path: inset(0 0 0 50%); /* clipping left half of the circle */
   background-image: url('https://i.gifer.com/2P5x.gif');
   background-repeat: no-repeat;
-  background-size: 90% 100%; /* Width and height values */
-  background-position: calc(100% +  0.625em) center; /* Moving the image to the right by 10 pixels from the edge */
+  background-size: 90% 100%; /* width and height values */
+  background-position: calc(100% +  0.625em) center; /* moving the image to the right by 10 pixels from the edge */
 }
 
 #handle.blue-bg {
@@ -44,7 +44,7 @@
 </div>
 
 <script>
-// Making the handle draggable
+// making the handle draggable
 dragElement(document.getElementById("handle"));
 
 window.addEventListener("resize", function() {
@@ -55,7 +55,7 @@ window.addEventListener("resize", function() {
 
 function dragElement(elmnt) {
   var startPosX = 0, currentPosX = 0;
-  var maxBarWidth = window.innerWidth - (elmnt.offsetWidth / 16); // Using the width of the browser window
+  var maxBarWidth = window.innerWidth - (elmnt.offsetWidth / 16); // using the width of the browser window
 
   elmnt.onmousedown = dragMouseDown;
 
@@ -76,18 +76,18 @@ function dragElement(elmnt) {
   var newWidth = bar.clientWidth + currentPosX;
   //console.log(`newWidth = ${bar.clientWidth} + ${currentPosX} = ${newWidth}`)
   
-  // Defining the minimum width to keep the handle from entering the bar area
+  // defining the minimum width to keep the handle from entering the bar area
   var minBarWidth = 3; // This is the initial width of the bar
 
-  // Restricting the width within the minimum and maximum bounds
+  // restricting the width within the minimum and maximum bounds
   newWidth = Math.max(minBarWidth, Math.min(newWidth, maxBarWidth));
 
-  // Setting the new width
+  // setting the new width
   bar.style.width = newWidth + "px";
 
   var handle = document.getElementById("handle");
 
-   // Adding or removing the 'blue-bg' class based on the handle's position
+   // adding or removing the 'blue-bg' class based on the handle's position
     if (newWidth >= maxBarWidth) {
         handle.classList.add('blue-bg');
     } else {
